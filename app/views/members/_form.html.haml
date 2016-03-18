@@ -1,0 +1,10 @@
+= simple_form_for(@member, :url => member_path(@member)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :email
+    %div
+      Role
+    = f.select :role, options_for_select([["Developer", "developer"],["Manager", "manager"]])
+  .form-actions
+    = f.button :submit

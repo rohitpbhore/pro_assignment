@@ -1,0 +1,15 @@
+%h1 Listing members
+
+%table
+  %thead
+    %tr
+      %th Email
+      %th Role
+      %th Action
+
+  %tbody
+    - @members.each do |member|
+      %tr
+        %td= member.email
+        %td= member.role
+        %td= link_to 'Edit', edit_member_path(member)

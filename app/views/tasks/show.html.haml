@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @task.name
+%p
+  %b Description:
+  = @task.description
+%p
+  %b Project:
+  = @task.project.name
+%p
+  %b Status:
+  = @task.status
+%p
+  %b User:
+  = @task.user.try(:email)
+
+= link_to 'Edit', edit_project_task_path(@project, @task), class: "btn btn-info"
+\|
+= link_to 'Back', project_tasks_path(@project), class: "btn btn-primary"

@@ -1,0 +1,23 @@
+= form_for [@project, @task] do |f|
+  - if @task.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
+      %ul
+        - @task.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :status
+    = f.select(:status, options_for_select([["Initial", "initial"], ["In Progress", "in_progress"], ["Done", "done"]]))
+  - if !current_user.role?('developer')
+    .field
+      = f.label :user_id
+      = f.select(:user_id, options_for_select(User.all.map{|m| [m.email, m.id]}),{include_blank: true})
+  .actions
+    = f.submit 'Save', class: "btn btn-success"

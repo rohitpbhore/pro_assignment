@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @project.name
+%p
+  %b Description:
+  = @project.description
+%p
+  %b Client:
+  = @project.client
+%p
+  %b Active:
+  = @project.active
+
+= link_to 'Edit', edit_project_path(@project), :class => "btn btn-info"
+= link_to 'Back', projects_path, :class => "btn btn-warning"
+
+%br
+%br
+= link_to "Create Task", new_project_task_path(@project.id), :class => "btn btn-primary"

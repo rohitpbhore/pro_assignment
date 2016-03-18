@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %title ProManage
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .main_container
+      .container-narrow
+        .masthead
+          = render 'layouts/user_header'
+          %h3.muted= link_to "Project Management", root_path
+        %hr/
+        - if flash
+          .flash-messages
+            - flash.each do |type, message|
+              - if message.present?
+                %div{class: type==:error ? "alert alert-error fade in" : "alert alert-info fade in"}
+                  %a.close{href: "#", :'data-dismiss' => "alert"}
+                    ! &times;
+                  %p= message
+        .data_container
+          = yield
+          %div
