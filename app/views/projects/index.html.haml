@@ -1,5 +1,5 @@
 %h1 Listing projects
-
+%br
 %table
   %thead
     %tr
@@ -19,18 +19,9 @@
         %td= project.active
         %td= link_to 'Show', project
         %td= link_to 'Edit', edit_project_path(project)
-        %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Destroy', project, :method => :delete, :data => {:confirm => 'Are you sure?'}
         %td= link_to 'View all tasks', project_tasks_path(project)
-
-
-%br
 
 - if can? :manage, Project
   %h4
-    = link_to 'Create New Project', new_project_path
-
-  - @projects.each do |project|
-    %div{"style" => "float: left"}
-      %h3= project.name
-      = image_tag(pie_chart_for_solutions(project), :alt => "#{project.name}")
-
+    = link_to 'Create New Project', new_project_path, class: "btn btn-success"

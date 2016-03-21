@@ -1,9 +1,10 @@
 <ul class="nav nav-pills pull-right">
   <% if user_signed_in? %>
-    <li><%= link_to "#{current_user.role} | #{current_user.email}", '#' %></li>
+    <li><%= link_to "Home", projects_path %></li>
     <% if can? :manage, User %>
       <li><%= link_to "Manage User", members_path %></li>
     <% end %>
+    <li><%= link_to "#{current_user.role} | #{current_user.email}", '#' %></li>
     <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
   <% else %>
     <li><%= link_to "Sign in", new_user_session_path %></li>

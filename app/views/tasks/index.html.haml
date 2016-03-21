@@ -1,9 +1,9 @@
-%h1 Listing tasks
-
+%h1= @project.name
+%br
 %table
   %thead
     %tr
-      %th Name
+      %th Task Name
       %th Description
       %th Project
       %th Status
@@ -20,11 +20,13 @@
         %td= task.project.name
         %td= task.status
         %td= task.user.try(:email)
-        %td= link_to 'Show', project_task_path(@project, task), class: "btn btn-primary"
-        %td= link_to 'Edit', edit_project_task_path(@project, task), class: "btn btn-info"
-        %td= link_to 'Destroy', project_task_path(@project, task), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger btn-xs"
+        %td= link_to 'Show', project_task_path(@project, task)
+        %td= link_to 'Edit', edit_project_task_path(@project, task)
+        %td= link_to 'Destroy', project_task_path(@project, task), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
+= link_to 'Back', projects_path, class: "btn"
+
 - if can? :manage, Task
-  = link_to 'New Task',  new_project_task_path(@project)
+  = link_to 'New Task',  new_project_task_path(@project), class: "btn btn-success"

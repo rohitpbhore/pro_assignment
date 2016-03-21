@@ -1,0 +1,32 @@
+<h3>Dashboard</h3>
+
+<table style="width:100%;">
+  <tr>
+    <th>Status</th>
+    <% @projects.map(&:name).each do |name| %>
+      <th><%= name %></th>
+    <%end%>
+  </tr>
+
+  <% @statuses.each do |status| %>
+    <tr>
+      <td><b><%= status[0].capitalize %></b></td>
+      <% @projects.each do |project| %>
+        <td><%= project.tasks.where(status: status[1]).map(&:name).join("<br>").html_safe %></td>
+      <%end%>
+    </tr>
+  <% end %>
+</table>
+
+<hr/>
+
+<% if can? :manage, Project %>
+  <% @projects.each do |project| %>
+    <div style="float:left; width:50%;">
+      <% if project.tasks.exists? %>
+        <h3><%= project.name %></h3>
+        <%= image_tag(pie_chart_for_solutions(project), :alt => "#{project.name}") %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
