@@ -13,9 +13,10 @@
   %b Active:
   = @project.active
 
-= link_to 'Edit', edit_project_path(@project), :class => "btn btn-info"
-= link_to 'Back', projects_path, :class => "btn btn-warning"
+= link_to 'Edit', edit_project_path(@project), :class => "btn"
+|
+= link_to 'Back', projects_path, :class => "btn"
 
 %br
 %br
-= link_to "Create Task", new_project_task_path(@project.id), :class => "btn btn-primary"
+= link_to "Create Task", new_project_task_path(@project.id), :class => "btn btn-success"

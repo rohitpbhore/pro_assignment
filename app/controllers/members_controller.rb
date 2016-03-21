@@ -23,19 +23,19 @@ class MembersController < ApplicationController
 
   # POST /members
   # POST /members.json
-  def create
-    @member = User.new(member_params)
+  # def create
+  #   @member = User.new(member_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
-        format.json { render :show, status: :created, location: @member }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @user.save
+  #       format.html { redirect_to @member, notice: 'Member was successfully created.' }
+  #       format.json { render :show, status: :created, location: @member }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @user.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json

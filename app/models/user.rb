@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :tasks
   has_many :projects, through: :tasks 
 
+  scope :developers, -> { where( role: 3 ) }
+
   # Create first user as a super admin
   def create_super_admin
   	if User.all.blank?

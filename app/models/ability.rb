@@ -5,17 +5,8 @@ class Ability
 
     user ||= User.new
 
-    # Define a few sample abilities
-    if user.role?("super_admin")
-      can  :manage, Project
-      can  :manage, Task
-      can  :manage, User
-    end
-
-    if user.role?("manager")
-      can  :manage, Project
-      can  :manage, Task
-      can  :manage, User
+    if user.role?("super_admin") || user.role?("manager")
+      can  :manage, :all
     end
 
     if user.role?("developer")
@@ -24,6 +15,7 @@ class Ability
       can  :update, Task
       can  :read, Project
     end
+    
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
